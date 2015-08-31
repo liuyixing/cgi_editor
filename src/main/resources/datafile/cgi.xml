@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cgis xmlns="http://www.up24.com/cgischema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.up24.com/cgischema cgi.xsd">
+  <cgi name="Admingoodsclass_classOp" type="sys" comment="类目管理" author="郑富山" needLogin="Y">
+    <param name="act" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="list,add,edit,del" comment="操作名称"/>
+    <param name="gc_parent_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="t_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="t_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="para_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_keywords" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="t_associated" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="p_associated" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_description" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+  </cgi>
+  <cgi name="Adminindexrec_recOp" type="sys" comment="首页广告管理" author="郑富山" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="del_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="批量删除广告的id"/>
+  </cgi>
+  <cgi name="Adminindexrec_addRec" type="sys" comment="首页广告添加" author="郑富山" needLogin="Y">
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="rp_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="广告位id"/>
+    <param name="rec_type" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="广告类型"/>
+    <param name="rec_title" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告标题"/>
+    <param name="rec_content" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告文字内容"/>
+    <param name="rec_position" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment="广告所在位置"/>
+    <param name="rec_url" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="跳转链接"/>
+    <param name="extra_info" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="附加样式信息"/>
+    <param name="is_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="是否在前端显示"/>
+  </cgi>
+  <cgi name="Adminindexrec_editRec" type="sys" comment="首页广告编辑" author="郑富山" needLogin="Y">
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="rec_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="rp_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="rec_type" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment=""/>
+    <param name="rec_title" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="rec_content" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="rec_position" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="rec_url" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="extra_info" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="附加样式信息"/>
+    <param name="is_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="是否在前端显示"/>
+  </cgi>
+  <cgi name="Adminindexrec_delRec" type="sys" comment="首页广告删除" author="郑富山" needLogin="Y">
+    <param name="rec_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="广告id"/>
+  </cgi>
+  <cgi name="Adminindexrec_rpOp" type="sys" comment="首页广告位管理页面" author="郑富山" needLogin="Y">
+    <param name="do" origin="get" required="N" type="enum" allowHtml="N" typeDesc="stat_change,del" comment="操作标记"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="rp_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="广告位id"/>
+    <param name="del_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="要删除的广告id"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="Adminindexrec_addRp" type="sys" comment="首页添加广告位" author="郑富山" needLogin="Y">
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="rp_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位名称"/>
+    <param name="rp_page" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位所在页面"/>
+    <param name="rp_page_position" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位所在的页面的具体位置"/>
+    <param name="rec_num" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="广告位上的广告数"/>
+    <param name="rp_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="广告位是否在前端显示"/>
+    <param name="rp_subtitle" origin="post" required="N" type="string" allowHtml="N" typeDesc="80" comment="标题的补充描述"/>
+    <param name="rp_url" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="广告位URL"/>
+    <param name="sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="zone_tpl" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="商品专题模板"/>
+    <param name="subnav" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="子导航"/>
+    <param name="rp_title" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位标题"/>
+  </cgi>
+  <cgi name="Adminindexrec_editRp" type="sys" comment="首页广告位编辑" author="郑富山" needLogin="Y">
+    <param name="form_submit" origin="post" required="N" type="string" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="rp_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="广告位id"/>
+    <param name="rp_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位名称"/>
+    <param name="rp_page" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位所在页面"/>
+    <param name="rp_page_position" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位所在的页面的具体位置"/>
+    <param name="rec_num" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="广告位上的广告数"/>
+    <param name="rp_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="广告位是否在前端显示"/>
+    <param name="rp_subtitle" origin="post" required="N" type="string" allowHtml="N" typeDesc="80" comment="标题的补充描述"/>
+    <param name="rp_url" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="广告位URL"/>
+    <param name="sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="zone_tpl" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="商品专题模板"/>
+    <param name="subnav" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="子导航"/>
+    <param name="rp_title" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="广告位标题"/>
+  </cgi>
+  <cgi name="index" type="index" comment="首页" author="郑富山" needLogin="N"/>
+  <cgi name="search" type="index" comment="商品列表页筛选接口" author="郑富山" needLogin="N">
+    <param name="gc_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="类目id"/>
+    <param name="brand_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="品牌id"/>
+    <param name="sp_value_id" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="[0,max]" comment="规格值id"/>
+    <param name="attr_id" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="[0,max]" comment="属性值id"/>
+    <param name="order" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="排序规则"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="member_changeAddress" type="json" comment="用户修改地址" author="胡华泉" needLogin="Y">
+    <param name="address_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="地址ID"/>
+    <param name="true_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="用户真实姓名"/>
+    <param name="area_id_top" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="一级地区ID"/>
+    <param name="area_id_mid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="二级地区ID"/>
+    <param name="area_id_bot" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="三级地区ID"/>
+    <param name="address" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment="地址详细信息"/>
+    <param name="zip_code" origin="post" required="N" type="string" allowHtml="N" typeDesc="6" comment="邮政编码"/>
+    <param name="tel_phone" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="电话号码"/>
+    <param name="mob_phone" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="手机号码"/>
+  </cgi>
+  <cgi name="member_evaluateOrder" type="json" comment="用户评价订单" author="胡华泉" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+    <param name="spec_id" origin="post" required="Y" type="int_list" allowHtml="N" typeDesc="[1,max]" comment="sku ID"/>
+    <param name="points" origin="post" required="Y" type="int_list" allowHtml="N" typeDesc="[-1,1]" comment="分数"/>
+  </cgi>
+  <cgi name="swf_comment" type="json" comment="评价时上传图片" author="胡华泉" needLogin="N">
+    <param name="Filename" origin="post" required="N" type="string" allowHtml="N" typeDesc="50" comment="文件名"/>
+    <param name="Upload" origin="post" required="N" type="enum" allowHtml="N" typeDesc="Submit Query" comment=""/>
+  </cgi>
+  <cgi name="member_needEvaluate" type="index" comment="显示需要评价的商品" author="胡华泉" needLogin="Y">
+    <param name="order_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+  </cgi>
+  <cgi name="goods_detail" type="index" comment="商品详情" author="胡华泉" needLogin="N">
+    <param name="goods_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品ID"/>
+    <param name="store_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="店铺ID"/>
+  </cgi>
+  <cgi name="Adminbrand_brand" type="sys" comment="品牌列表页" author="胡华泉" needLogin="Y">
+    <param name="search_brand_name" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="需要搜索的品牌名称"/>
+    <param name="search_brand_class" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="需要搜索的品牌类型"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="Adminbrand_addpage" type="sys" comment="新增品牌页面" author="胡华泉" needLogin="Y"/>
+  <cgi name="Adminbrand_addsave" type="sys" comment="增加品牌   " author="胡华泉" needLogin="Y">
+    <param name="brand_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="品牌名称"/>
+    <param name="brand_class" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="品牌类型"/>
+    <param name="brand_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="品牌排序"/>
+    <param name="brand_recommend" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否推荐"/>
+  </cgi>
+  <cgi name="Adminbrand_editpage" type="sys" comment="编辑品牌页面" author="胡华泉" needLogin="Y">
+    <param name="brand_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要修改的品牌ID"/>
+  </cgi>
+  <cgi name="Adminbrand_editsave" type="sys" comment="品牌编辑" author="胡华泉" needLogin="Y">
+    <param name="brand_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要修改的品牌ID"/>
+    <param name="brand_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="品牌名称"/>
+    <param name="brand_class" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="品牌类型"/>
+    <param name="brand_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="品牌排序"/>
+    <param name="brand_recommend" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否推荐"/>
+  </cgi>
+  <cgi name="Adminbrand_del" type="json" comment="删除品牌" author="胡华泉" needLogin="Y">
+    <param name="del_brand_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要删除的品牌ID"/>
+  </cgi>
+  <cgi name="Adminbrand_delMulti" type="sys" comment="批量删除品牌" author="胡华泉" needLogin="Y">
+    <param name="del_brand_id" origin="post" required="Y" type="array" allowHtml="N" typeDesc="[1,max]" comment="需要删除的品牌ID数组"/>
+  </cgi>
+  <cgi name="Adminbrand_ajax" type="json" comment="有关品牌的ajax操作" author="胡华泉" needLogin="Y">
+    <param name="branch" origin="get" required="N" type="enum" allowHtml="N" typeDesc="brand_name,brand_class,brand_sort,brand_recommend,check_brand_name" comment="要进行的操作"/>
+    <param name="value" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="需要修改的值"/>
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要操作的品牌ID"/>
+    <param name="column" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="需要修改的字段"/>
+  </cgi>
+  <cgi name="Adminbrand_export" type="sys" comment="导出品牌" author="胡华泉" needLogin="Y">
+    <param name="search_brand_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="10" comment="需要搜索的品牌名称"/>
+    <param name="search_brand_class" origin="post" required="N" type="string" allowHtml="N" typeDesc="10" comment="需要搜索的品牌类型"/>
+    <param name="curpage" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="当前页码"/>
+  </cgi>
+  <cgi name="Adminnavigation_index" type="sys" comment="导航列表" author="胡华泉" needLogin="Y">
+    <param name="nav_pid" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="父级导航ID"/>
+  </cgi>
+  <cgi name="Adminnavigation_ajaxNav" type="json" comment="使用ajax返回导航列表" author="胡华泉" needLogin="Y">
+    <param name="nav_pid" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="父级导航ID"/>
+  </cgi>
+  <cgi name="Adminnavigation_addPage" type="sys" comment="新增导航栏页面" author="胡华泉" needLogin="Y"/>
+  <cgi name="Adminnavigation_addSave" type="sys" comment="增加导航" author="胡华泉" needLogin="Y">
+    <param name="nav_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="4" comment="导航名称"/>
+    <param name="nav_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,255]" comment="导航排序"/>
+    <param name="nav_status" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否显示"/>
+    <param name="nav_url" origin="post" required="Y" type="string" allowHtml="N" typeDesc="255" comment="导航的URL"/>
+    <param name="nav_pid" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="父级导航ID"/>
+  </cgi>
+  <cgi name="Adminnavigation_editPage" type="sys" comment="编辑导航页面" author="胡华泉" needLogin="Y">
+    <param name="nav_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要修改的导航ID"/>
+  </cgi>
+  <cgi name="Adminnavigation_editSave" type="sys" comment="编辑导航" author="胡华泉" needLogin="Y">
+    <param name="nav_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="4" comment="需要修改的导航名称"/>
+    <param name="nav_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要修改的导航ID"/>
+    <param name="nav_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,255]" comment="修改的导航排序"/>
+    <param name="nav_status" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="导航是否显示"/>
+    <param name="nav_url" origin="post" required="Y" type="string" allowHtml="N" typeDesc="255" comment="需要修改的URL"/>
+  </cgi>
+  <cgi name="Adminnavigation_ajax" type="json" comment="有关导航的ajax操作" author="胡华泉" needLogin="Y">
+    <param name="branch" origin="get" required="N" type="enum" allowHtml="N" typeDesc="nav_name,del,check_nav_name,nav_status,nav_sort,nav_url" comment="要进行的操作"/>
+    <param name="value" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="需要操作的导航ID"/>
+    <param name="column" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="进行操作的字段"/>
+  </cgi>
+  <cgi name="Adminnavigation_del" type="json" comment="删除导航" author="胡华泉" needLogin="Y">
+    <param name="nav_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要删除的导航ID"/>
+    <param name="have_child" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[0,1]" comment="是否为父级导航"/>
+  </cgi>
+  <cgi name="Adminnavigation_addSubPage" type="sys" comment="添加下级导航页面" author="胡华泉" needLogin="Y">
+    <param name="nav_pid" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="父级导航ID"/>
+  </cgi>
+  <cgi name="goods_gcRecommendGoods" type="json" comment="同级类目推荐商品" author="胡华泉" needLogin="N">
+    <param name="gc_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="类目ID"/>
+    <param name="goods_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="当前商品ID"/>
+  </cgi>
+  <cgi name="goodsevaluate_getList" type="json" comment="返回评论信息列表" author="胡华泉" needLogin="N">
+    <param name="goods_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品ID"/>
+    <param name="eType" origin="post" required="N" type="enum" allowHtml="N" typeDesc="0,1,2,3,4" comment="评价类型.0:全部;1:好评;2:中评;3:差评;4:有图片"/>
+    <param name="store_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="店铺ID"/>
+    <param name="page" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="页码"/>
+  </cgi>
+  <cgi name="cart_index" type="index" comment="购物车首页" author="陈伟锋" needLogin="N"/>
+  <cgi name="cart_set" type="json" comment="添加到购物车" author="陈伟锋" needLogin="N">
+    <param name="store_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="购物车店铺ID"/>
+    <param name="spec_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="购物车商品规格ID"/>
+    <param name="quantity" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="添加到购物车的数量"/>
+  </cgi>
+  <cgi name="cart_del" type="json" comment="删除购物车" author="陈伟锋" needLogin="N">
+    <param name="cart_id" origin="post" required="Y" type="string" allowHtml="N" typeDesc="10" comment="删除购物车条目"/>
+  </cgi>
+  <cgi name="erp_mGetGoods" type="erp" comment="erp获取商品接口" author="郑富山" needLogin="N">
+    <param name="uCode" origin="post" required="Y" type="int" allowHtml="N" typeDesc="6688" comment="接入码，用于验证请求的有效性。"/>
+    <param name="mType" origin="post" required="Y" type="string" allowHtml="N" typeDesc="mGetGoods" comment="请求类别"/>
+    <param name="GoodsType" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="商品状态，1在售，2下架"/>
+    <param name="OuterID" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="商品的商家编码"/>
+    <param name="GoodsName" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="商品名称"/>
+    <param name="PageSize" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="返回数量"/>
+    <param name="Page" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="返回页数  "/>
+  </cgi>
+  <cgi name="erp_mSysGoods" type="erp" comment="erp库存同步接口" author="郑富山" needLogin="N">
+    <param name="uCode" origin="post" required="Y" type="int" allowHtml="N" typeDesc="6688" comment="接入码，用于验证请求的有效性。"/>
+    <param name="mType" origin="post" required="Y" type="string" allowHtml="N" typeDesc="mSysGoods" comment="请求类别"/>
+    <param name="ItemID" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="主商品id"/>
+    <param name="SkuID" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="商品的商家编码"/>
+    <param name="Quantity" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="库存量"/>
+  </cgi>
+  <cgi name="adminindex_index" type="sys" comment="后台首页" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminadmin_admin" type="sys" comment="管理员列表" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminadmin_set" type="sys" comment="设置管理员权限页面" author="周稳稳" needLogin="Y">
+    <param name="admin_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="管理员id"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+    <param name="permission" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="用于存储权限的数组"/>
+  </cgi>
+  <cgi name="adminadmin_del" type="json" comment="删除管理员" author="周稳稳" needLogin="Y">
+    <param name="admin_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="管理员id"/>
+  </cgi>
+  <cgi name="adminadmin_add" type="sys" comment="添加管理员界面" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminadmin_addsave" type="sys" comment="添加管理员" author="周稳稳" needLogin="Y">
+    <param name="admin_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="管理员名称"/>
+    <param name="permission" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="用于存储权限的数组"/>
+    <param name="form_submit" origin="post" required="N" type="string" allowHtml="N" typeDesc="ok" comment="提交"/>
+  </cgi>
+  <cgi name="admingoods_goods" type="sys" comment="商品列表" author="周稳稳" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+    <param name="search_goods_serial" origin="get" required="N" type="string" allowHtml="N" typeDesc="40" comment="商品货号"/>
+    <param name="search_goods_name" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="搜索商品名称"/>
+    <param name="search_brand_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="品牌id"/>
+    <param name="cate_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="分类id"/>
+    <param name="cate_name" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment=""/>
+    <param name="search_store_name" origin="get" required="N" type="string" allowHtml="N" typeDesc="50" comment="店铺名称"/>
+    <param name="search_lock" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否违规"/>
+    <param name="goods_state" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="商品状态是否违规"/>
+    <param name="search_show" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否上架"/>
+    <param name="del_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="批量操作的id"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment=""/>
+    <param name="type" origin="post" required="N" type="enum" allowHtml="N" typeDesc="recommend,edit,del" comment="批量操作类型"/>
+  </cgi>
+  <cgi name="adminstoregoods_edit" type="sys" comment="商品编辑页面" author="周稳稳" needLogin="Y">
+    <param name="goods_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品id"/>
+  </cgi>
+  <cgi name="adminstoregoods_editsave" type="sys" comment="编辑 商品保存" author="周稳稳" needLogin="Y">
+    <param name="type_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="类别id"/>
+    <param name="goods_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品id"/>
+    <param name="spec_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="规则id"/>
+    <param name="cate_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="分类id"/>
+    <param name="cate_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="40" comment="分类名称"/>
+    <param name="goods_form" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="类型：新、二手"/>
+    <param name="goods_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment="商品名称"/>
+    <param name="goods_store_price" origin="post" required="Y" type="float" allowHtml="N" typeDesc="" comment="价格"/>
+    <param name="goods_store_price_interval" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="价格区间"/>
+    <param name="activity_price" origin="post" required="N" type="float" allowHtml="N" typeDesc="[0,max]" comment="活动价格"/>
+    <param name="bkge" origin="post" required="Y" type="float" allowHtml="N" typeDesc="" comment="佣金"/>
+    <param name="goods_storage" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="库存"/>
+    <param name="goods_serial" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="商品规格"/>
+    <param name="brand_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="品牌id"/>
+    <param name="goods_body" origin="post" required="N" type="string" allowHtml="Y" typeDesc="" comment="商品详情"/>
+    <param name="about" origin="post" required="N" type="string" allowHtml="N" typeDesc="500" comment="简介"/>
+    <param name="province_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="归属地id"/>
+    <param name="goods_show" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否上架显示"/>
+    <param name="goods_commend" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否推荐"/>
+    <param name="seo_keywords" origin="post" required="N" type="string" allowHtml="N" typeDesc="50" comment="seo keywords"/>
+    <param name="attr" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment=""/>
+    <param name="spec_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="goods_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="city_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="seo_description" origin="post" required="N" type="string" allowHtml="N" typeDesc="200" comment="seo描述"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+    <param name="sp_name" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="选择规格的名称"/>
+    <param name="sp_val" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="规格的值"/>
+    <param name="spec" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="规格"/>
+    <param name="goods_col_img" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="商品色彩默认图片"/>
+    <param name="safeguards" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="售后保障"/>
+    <param name="goods_recomm" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="推荐相关"/>
+    <param name="recomm_position" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="推荐显示位置"/>
+    <param name="recomm_expired" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="推荐结束时间"/>
+    <param name="para_tpl" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="商品规格参数"/>
+    <param name="image_path" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment=""/>
+  </cgi>
+  <cgi name="adminstoregoods_imageUpload" type="json" comment="上传图片" author="周稳稳" needLogin="Y">
+    <param name="id" origin="post" required="Y" type="string" allowHtml="N" typeDesc="10" comment="上传图片对应的id"/>
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment=""/>
+    <param name="upload_type" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="uploadedfile" comment=""/>
+  </cgi>
+  <cgi name="adminstoregoods_ajaxClass" type="json" comment="动态请求商品分类" author="周稳稳" needLogin="Y">
+    <param name="gc_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+  </cgi>
+  <cgi name="adminstoregoods_ajaxstaple" type="json" comment="添加、删除常用分类" author="周稳稳" needLogin="Y">
+    <param name="class_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="分类id"/>
+    <param name="column" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="add,del" comment="本次操作的类型"/>
+  </cgi>
+  <cgi name="storegoods_ajaxShowComm" type="json" comment="显示常用分类" author="周稳稳" needLogin="Y">
+    <param name="name" origin="get" required="Y" type="string" allowHtml="N" typeDesc="1000" comment="根据name去显示常用分类"/>
+  </cgi>
+  <cgi name="adminstoregoods_add" type="sys" comment="添加商品页面" author="周稳稳" needLogin="Y">
+    <param name="goods_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="用于编辑跳转"/>
+    <param name="step" origin="get" required="N" type="enum" allowHtml="N" typeDesc="one,two" comment="添加商品的步骤"/>
+    <param name="class_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment=""/>
+    <param name="t_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment=""/>
+  </cgi>
+  <cgi name="adminstoregoods_save&#10;" type="sys" comment="添加商品保存" author="周稳稳" needLogin="Y">
+    <param name="type_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="类型id"/>
+    <param name="cate_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="分类id"/>
+    <param name="cate_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="40" comment="分类名称"/>
+    <param name="goods_form" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="类型：新、二手"/>
+    <param name="goods_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment="商品名称"/>
+    <param name="goods_store_price" origin="post" required="Y" type="float" allowHtml="N" typeDesc="" comment="商品价格"/>
+    <param name="goods_store_price_interval" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="价格区间"/>
+    <param name="activity_price" origin="post" required="N" type="float" allowHtml="N" typeDesc="[0,max]" comment="活动价格"/>
+    <param name="bkge" origin="post" required="Y" type="float" allowHtml="N" typeDesc="" comment="佣金"/>
+    <param name="goods_storage" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="库存"/>
+    <param name="goods_serial" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="商品编码"/>
+    <param name="brand_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="品牌id"/>
+    <param name="goods_body" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment="商品详情"/>
+    <param name="about" origin="post" required="N" type="string" allowHtml="N" typeDesc="500" comment="商品简介"/>
+    <param name="province_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment=""/>
+    <param name="goods_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="商品是否显示"/>
+    <param name="goods_commend" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="商品是否推荐"/>
+    <param name="seo_keywords" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="seo_description" origin="post" required="N" type="string" allowHtml="N" typeDesc="" comment=""/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+    <param name="image_path" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="图片路径"/>
+    <param name="sp_name" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="选择规格的名称"/>
+    <param name="sp_val" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="规格的值"/>
+    <param name="attr" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment=""/>
+    <param name="spec_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="goods_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="city_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="goods_col_img" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="商品色彩默认图片"/>
+    <param name="safeguards" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="售后保障"/>
+    <param name="goods_recomm" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="推荐相关"/>
+    <param name="recomm_position" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="推荐显示位置"/>
+    <param name="recomm_expired" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="推荐结束时间"/>
+    <param name="para_tpl" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="商品规格参数"/>
+    <param name="spec" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="规格"/>
+  </cgi>
+  <cgi name="admingoods_edit" type="sys" comment="商品批量编辑" author="周稳稳" needLogin="Y">
+    <param name="goods_id" origin="all" required="Y" type="int_list" allowHtml="N" typeDesc="[1,max]" comment="商品id"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+    <param name="goods_state" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="商品状态"/>
+    <param name="cate_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="分类id"/>
+    <param name="cate_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="10" comment="分类名称"/>
+    <param name="brand_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="品牌id"/>
+    <param name="set_goods_state" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品原因"/>
+    <param name="goods_close_reason" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="关闭的原因"/>
+  </cgi>
+  <cgi name="admingoods_ajax" type="json" comment="ajax操作商品状态" author="周稳稳" needLogin="Y">
+    <param name="column" origin="get" required="N" type="string" allowHtml="N" typeDesc="20" comment="操作的数据库字段"/>
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品id"/>
+    <param name="branch" origin="get" required="N" type="enum" allowHtml="N" typeDesc="goods_name,goods_show,goods_state" comment="操作的分支"/>
+    <param name="value" origin="get" required="N" type="string" allowHtml="N" typeDesc="50" comment="设置的值"/>
+  </cgi>
+  <cgi name="admintype_type" type="sys" comment="类型列表" author="周稳稳" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="admintype_add" type="sys" comment="新增类型界面" author="周稳稳" needLogin="Y"/>
+  <cgi name="admintype_addsave" type="sys" comment="新增类型" author="周稳稳" needLogin="Y">
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交submit"/>
+    <param name="t_mane" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="类别名称"/>
+    <param name="t_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序id"/>
+    <param name="spec_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="spec规则id"/>
+    <param name="brand_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="品牌id"/>
+    <param name="at_value" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="附加属性设置"/>
+  </cgi>
+  <cgi name="admintype_edit" type="sys" comment="编辑类型界面" author="周稳稳" needLogin="Y">
+    <param name="t_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="type_id"/>
+  </cgi>
+  <cgi name="admintype_editsave" type="sys" comment="编辑类型" author="周稳稳" needLogin="Y">
+    <param name="t_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="类型id"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+    <param name="t_mane" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="类型名称"/>
+    <param name="t_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="spec_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="spec规则id"/>
+    <param name="brand_id" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="品牌id"/>
+    <param name="at_value" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="附加属性设置"/>
+    <param name="spec_checkbox" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="是否勾选规则"/>
+    <param name="spec" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment=""/>
+    <param name="a_del" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="需要删除的属性"/>
+    <param name="brand" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="是否勾选了品牌"/>
+    <param name="off_shelf" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="商品是否下线"/>
+  </cgi>
+  <cgi name="admintype_del" type="json" comment="删除类型" author="周稳稳" needLogin="Y">
+    <param name="del_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="需要删除的id"/>
+  </cgi>
+  <cgi name="adminspec_addsave" type="sys" comment="添加规格" author="周稳稳" needLogin="Y">
+    <param name="s_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="名称"/>
+    <param name="s_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="s_dtype" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="text,image" comment="规格类型为：图片还是文字"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+    <param name="s_value" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="规格值信息"/>
+  </cgi>
+  <cgi name="adminspec_add" type="sys" comment="添加规格页面" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminspec_spec" type="sys" comment="规格列表" author="周稳稳" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="adminspec_edit" type="sys" comment="编辑页面" author="周稳稳" needLogin="Y">
+    <param name="sp_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="规则id"/>
+  </cgi>
+  <cgi name="adminspec_editsave" type="sys" comment="编辑规格保存" author="周稳稳" needLogin="Y">
+    <param name="s_value" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="规格值信息"/>
+    <param name="s_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="s_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="名称"/>
+    <param name="s_id" origin="all" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="规则id"/>
+    <param name="s_dtype" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="text,image" comment="规格类型为：图片还是文字"/>
+    <param name="off_shelf" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="商品是否下线"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="提交"/>
+  </cgi>
+  <cgi name="adminspec_del" type="json" comment="删除规格" author="周稳稳" needLogin="Y">
+    <param name="del_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="需要删除的规格id"/>
+  </cgi>
+  <cgi name="adminstore_store" type="sys" comment="店铺列表" author="周稳稳" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="adminstore_add" type="sys" comment="添加店铺页面" author="周稳稳" needLogin="Y">
+    <param name="step" origin="get" required="N" type="enum" allowHtml="N" typeDesc="one,two" comment=""/>
+  </cgi>
+  <cgi name="adminstore_addsaveone" type="sys" comment="添加店铺第一步" author="周稳稳" needLogin="Y">
+    <param name="step" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="one,two" comment=""/>
+    <param name="yyno" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="需要添加人的yy号"/>
+    <param name="form_submit" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="ok" comment=""/>
+  </cgi>
+  <cgi name="adminstore_addsavetwo" type="sys" comment="添加店铺第二步" author="周稳稳" needLogin="Y">
+    <param name="step" origin="post" required="N" type="enum" allowHtml="N" typeDesc="one,two" comment=""/>
+    <param name="store_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment="店铺名称"/>
+    <param name="member_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="用户名"/>
+    <param name="member_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="用户id"/>
+    <param name="store_tel" origin="post" required="Y" type="string" allowHtml="N" typeDesc="15" comment="电话号码"/>
+    <param name="store_state" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否开启"/>
+    <param name="form_submit" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="ok" comment=""/>
+    <param name="store_exist" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment=""/>
+    <param name="store_close_info" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="关闭原因"/>
+    <param name="sina_weibo" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="新浪微博"/>
+    <param name="qq_weibo" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="腾讯微博"/>
+    <param name="tieba" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="百度贴吧"/>
+    <param name="huya_topic" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="互娱视频专题"/>
+    <param name="huya_live" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="虎牙直播间"/>
+    <param name="introduce" origin="post" required="N" type="string" allowHtml="N" typeDesc="300" comment="个人简介"/>
+    <param name="store_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序id"/>
+  </cgi>
+  <cgi name="adminstore_edit" type="sys" comment="编辑店铺" author="周稳稳" needLogin="Y">
+    <param name="store_id" origin="all" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="店铺id"/>
+    <param name="store_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="店铺名称"/>
+    <param name="store_tel" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="电话号码"/>
+    <param name="store_state" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment="是否开启"/>
+    <param name="store_exist" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="0,1" comment=""/>
+    <param name="store_close_info" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="关闭原因"/>
+    <param name="store_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序id"/>
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment=""/>
+    <param name="store_old_logo" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="旧logo"/>
+    <param name="sina_weibo" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="新浪微博"/>
+    <param name="qq_weibo" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="腾讯微博"/>
+    <param name="tieba" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="百度贴吧"/>
+    <param name="huya_topic" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="互娱视频专题"/>
+    <param name="huya_live" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="虎牙直播间"/>
+    <param name="introduce" origin="post" required="N" type="string" allowHtml="N" typeDesc="300" comment="个人简介"/>
+    <param name="store_old_banner" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="旧banner"/>
+  </cgi>
+  <cgi name="udb_login" type="index" comment="登陆页面" author="曾雷" needLogin="N"/>
+  <cgi name="udb_authreq" type="index" comment="登陆认证请求接口" author="刘毅星" needLogin="N">
+    <param name="callbackURL" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="登陆认证成功回调URL"/>
+    <param name="denyCallbackURL" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="取消登陆回调URL"/>
+  </cgi>
+  <cgi name="udb_callback" type="index" comment="登陆认证回调接口" author="刘毅星" needLogin="N">
+    <param name="oauth_token" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="udb传过来的oauth_token"/>
+    <param name="oauth_verifier" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="udb传过来的oauth_verifier"/>
+    <param name="last_url" origin="cookie" required="N" type="string" allowHtml="N" typeDesc="200" comment="登陆跳转用"/>
+    <param name="deny" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="1" comment="取消登陆的标记位"/>
+  </cgi>
+  <cgi name="udb_reg" type="index" comment="注册回调接口" author="周稳稳" needLogin="N"/>
+  <cgi name="udb_logout" type="index" comment="退出登陆接口" author="刘毅星" needLogin="N"/>
+  <cgi name="member_listorder" type="index" comment="买家中心订单列表" author="刘毅星" needLogin="Y">
+    <param name="order_state" origin="get" required="N" type="enum" allowHtml="N" typeDesc="wait_pay,closed,canceled,wait_send,wait_receive,wait_comment,completed,refunding,refunded" comment="订单状态"/>
+    <param name="order_sn" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单号"/>
+    <param name="begin_time" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="下单开始时间"/>
+    <param name="end_time" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="下单结束时间"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="页码"/>
+  </cgi>
+  <cgi name="member_changeorderstate" type="json" comment="修改订单状态接口" author="刘毅星" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="string" allowHtml="N" typeDesc="" comment="订单ID"/>
+    <param name="target_state" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="CANCELED,COMPLETED" comment="目标订单状态"/>
+  </cgi>
+  <cgi name="member" type="index" comment="个人中心" author="刘毅星" needLogin="Y"/>
+  <cgi name="member_showorder" type="index" comment="查看订单" author="刘毅星" needLogin="Y">
+    <param name="order_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+  </cgi>
+  <cgi name="member_showexpress" type="index" comment="查看物流" author="刘毅星" needLogin="Y">
+    <param name="order_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+  </cgi>
+  <cgi name="erp_mordersearch" type="erp" comment="订单列表同步接口" author="刘毅星" needLogin="N">
+    <param name="uCode" origin="post" required="Y" type="int_list" allowHtml="N" typeDesc="6688" comment="接入码"/>
+    <param name="mType" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="mOrderSearch" comment="方法名"/>
+    <param name="Sign" origin="post" required="Y" type="string" allowHtml="N" typeDesc="60" comment="验证码"/>
+    <param name="TimeStamp" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="时间戳"/>
+    <param name="OrderStatus" origin="post" required="Y" type="int_list" allowHtml="N" typeDesc="-1,0,1" comment="订单状态"/>
+    <param name="PageSize" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="返回数量"/>
+    <param name="Page" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="返回页数"/>
+  </cgi>
+  <cgi name="erp_mgetorder" type="erp" comment="订单详情查询接口" author="刘毅星" needLogin="N">
+    <param name="uCode" origin="post" required="Y" type="int" allowHtml="N" typeDesc="6688" comment="接入码"/>
+    <param name="mType" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="mGetOrder" comment="方法名"/>
+    <param name="Sign" origin="post" required="Y" type="string" allowHtml="N" typeDesc="60" comment="验证码"/>
+    <param name="TimeStamp" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="时间戳"/>
+    <param name="OrderNO" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单编号"/>
+  </cgi>
+  <cgi name="erp_msndgoods" type="erp" comment="订单发货同步接口" author="刘毅星" needLogin="N">
+    <param name="uCode" origin="post" required="Y" type="int" allowHtml="N" typeDesc="6688" comment="接入码"/>
+    <param name="mType" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="mSndGoods" comment="方法名"/>
+    <param name="Sign" origin="post" required="Y" type="string" allowHtml="N" typeDesc="60" comment="验证码"/>
+    <param name="TimeStamp" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="时间戳"/>
+    <param name="SndStyle" origin="post" required="Y" type="string" allowHtml="N" typeDesc="" comment="发货方式（中文 例：申通 圆通等）"/>
+    <param name="BillID" origin="post" required="Y" type="string" allowHtml="N" typeDesc="" comment="货运单号"/>
+    <param name="OrderNO" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单编号"/>
+  </cgi>
+  <cgi name="adminorder_order" type="sys" comment="后台订单列表" author="刘毅星" needLogin="Y">
+    <param name="order_number" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单编号"/>
+    <param name="add_time_from" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="下单开始时间"/>
+    <param name="add_time_to" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="下单结束时间"/>
+    <param name="buyer_truename" origin="get" required="N" type="string" allowHtml="N" typeDesc="20" comment="买家真实姓名"/>
+    <param name="order_state" origin="get" required="N" type="enum" allowHtml="N" typeDesc="WAIT_PAY,WAIT_SEND,WAIT_RECEIVE,COMPLETED,CANCELED,CLOSE,REFUNDING,REFUNDED" comment="订单状态"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="页码"/>
+  </cgi>
+  <cgi name="order_index" type="index" comment="订单确认（购物车）" author="刘守凯" needLogin="Y">
+    <param name="cart_ids" origin="get" required="Y" type="int_list" allowHtml="N" typeDesc="" comment="购物车ID数组"/>
+  </cgi>
+  <cgi name="order_address" type="json" comment="买家地址" author="刘守凯" needLogin="Y">
+    <param name="address_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="买家地址ID"/>
+    <param name="true_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="收货人姓名"/>
+    <param name="area_id_top" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="一级区域地址ID"/>
+    <param name="area_id_mid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="二级区域地址ID"/>
+    <param name="area_id_bot" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="三级区域地址ID"/>
+    <param name="address" origin="post" required="Y" type="string" allowHtml="N" typeDesc="80" comment="详细地址"/>
+    <param name="zip_code" origin="post" required="N" type="string" allowHtml="N" typeDesc="6" comment="邮政编码"/>
+    <param name="tel_phone" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="固定电话"/>
+    <param name="mob_phone" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="手机号码"/>
+    <param name="cart_ids" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="[1,max]" comment="购物车ID"/>
+    <param name="spec_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="立即购买-商品规格ID"/>
+    <param name="goods_num" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="立即购买-商品数量"/>
+  </cgi>
+  <cgi name="order_confirm" type="json" comment="订单下单" author="刘守凯" needLogin="Y">
+    <param name="cart_ids" origin="post" required="N" type="int_list" allowHtml="N" typeDesc="[1,max]" comment="购物车ID数组"/>
+    <param name="spec_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品规格ID"/>
+    <param name="goods_num" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品数量"/>
+    <param name="address_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="买家地址ID"/>
+    <param name="store_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="立即购买的店铺id"/>
+    <param name="order_message" origin="post" required="N" type="string" allowHtml="N" typeDesc="100" comment="买家留言"/>
+  </cgi>
+  <cgi name="order_pay" type="index" comment="订单支付" author="刘守凯" needLogin="Y">
+    <param name="order_id" origin="get" required="Y" type="string" allowHtml="N" typeDesc="" comment="订单ID"/>
+  </cgi>
+  <cgi name="order_instantBuy" type="index" comment="订单确认（立即购买）" author="刘守凯" needLogin="Y">
+    <param name="spec_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品规格ID"/>
+    <param name="goods_num" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品数量"/>
+    <param name="store_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="店铺id"/>
+  </cgi>
+  <cgi name="sellercentral_income" type="index" comment="卖家中心佣金收入（汇总）" author="刘守凯" needLogin="Y">
+    <param name="begin_time" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="开始时间"/>
+    <param name="end_time" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="结束时间"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="当前页"/>
+  </cgi>
+  <cgi name="sellercentral_incomedetail" type="index" comment="卖家中心佣金收入（明细）" author="刘守凯" needLogin="Y">
+    <param name="day" origin="get" required="Y" type="string" allowHtml="N" typeDesc="10" comment="佣金日期"/>
+    <param name="bkge" origin="get" required="Y" type="float" allowHtml="N" typeDesc="[0,max]" comment="日期佣金日期"/>
+  </cgi>
+  <cgi name="adminalbum_cate" type="sys" comment="图片管理入口" author="周稳稳" needLogin="Y">
+    <param name="sort" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="排序方式"/>
+  </cgi>
+  <cgi name="adminalbum_add" type="sys" comment="添加相册界面" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminalbum_checkclassname" type="json" comment="检查相册名称" author="周稳稳" needLogin="Y">
+    <param name="column" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="ok" comment=""/>
+    <param name="name" origin="get" required="Y" type="string" allowHtml="N" typeDesc="20" comment="相册名称"/>
+    <param name="ac_name" origin="get" required="Y" type="string" allowHtml="N" typeDesc="20" comment="名称"/>
+  </cgi>
+  <cgi name="adminalbum_addsave" type="sys" comment="保存相册" author="周稳稳" needLogin="Y">
+    <param name="form_submit" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="ok" comment="提交表单"/>
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="相册名称"/>
+    <param name="description" origin="post" required="N" type="string" allowHtml="N" typeDesc="300" comment="相册描述"/>
+    <param name="sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="相册排序"/>
+  </cgi>
+  <cgi name="adminalbum_edit" type="sys" comment="编辑相册" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+  </cgi>
+  <cgi name="adminalbum_editsave" type="sys" comment="编辑保存相册" author="周稳稳" needLogin="Y">
+    <param name="inajax" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="ajax请求标识"/>
+    <param name="id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+    <param name="form_submit" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="ok" comment="提交表单"/>
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="相册名称"/>
+    <param name="description" origin="post" required="Y" type="string" allowHtml="N" typeDesc="300" comment="相册描述"/>
+    <param name="sort" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="相册排序"/>
+  </cgi>
+  <cgi name="adminstoregoods_imageswupload" type="sys" comment="批量上传图片界面" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="id"/>
+    <param name="belong" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="instance" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="goods_image" comment="上传类型"/>
+    <param name="upload_type" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="remote_image" comment=""/>
+  </cgi>
+  <cgi name="adminswf_upload" type="json" comment="上传图片" author="周稳稳" needLogin="Y">
+    <param name="instance" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="goods_image" comment="上传图片类型"/>
+    <param name="Filename" origin="post" required="Y" type="string" allowHtml="N" typeDesc="50" comment="图片名称"/>
+    <param name="sid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="sid"/>
+    <param name="HTTP_USER_AGENT" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment=""/>
+    <param name="category_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+    <param name="Upload" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="Submit Query" comment=""/>
+  </cgi>
+  <cgi name="adminswf_image" type="sys" comment="商品详情批量上传" author="周稳稳" needLogin="Y">
+    <param name="Upload" origin="post" required="N" type="enum" allowHtml="N" typeDesc="Submit Query" comment=""/>
+    <param name="Filename" origin="post" required="N" type="string" allowHtml="N" typeDesc="50" comment="图片名称"/>
+  </cgi>
+  <cgi name="adminalbum_piclist" type="sys" comment="图片列表" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="分页"/>
+  </cgi>
+  <cgi name="adminalbum_picinfo" type="sys" comment="图片信息查看页面" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="图片id"/>
+    <param name="class_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+  </cgi>
+  <cgi name="adminalbum_outpiclist" type="sys" comment="调用图片列表" author="周稳稳" needLogin="Y">
+    <param name="item" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="goods,des,groupbuy,bundling_add,bundling_add_desc,store_sns_normal" comment=""/>
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+  </cgi>
+  <cgi name="adminalbum_picdel" type="json" comment="删除图片" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="图片id"/>
+  </cgi>
+  <cgi name="adminalbum_batchdelpic" type="json" comment="批量删除图片" author="周稳稳" needLogin="Y">
+    <param name="id" origin="post" required="Y" type="array" allowHtml="N" typeDesc="[1,max]" comment="图片id"/>
+    <param name="form_submit" origin="post" required="Y" type="enum" allowHtml="N" typeDesc="ok" comment="提交表单"/>
+    <param name="cid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+  </cgi>
+  <cgi name="adminudb_login" type="sys" comment="后台登录跳转地址" author="周稳稳" needLogin="N"/>
+  <cgi name="Admingoodsclass_index" type="sys" comment="类目管理列表页" author="郑富山" needLogin="Y">
+    <param name="gc_parent_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="类目管理列表页"/>
+  </cgi>
+  <cgi name="Admingoodsclass_goAdd" type="sys" comment="添加类目页" author="郑富山" needLogin="Y">
+    <param name="gc_parent_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="添加类目页"/>
+  </cgi>
+  <cgi name="Admingoodsclass_add" type="sys" comment="添加类目请求" author="郑富山" needLogin="Y">
+    <param name="form_submit" origin="post" required="N" type="enum" allowHtml="N" typeDesc="ok" comment="是否是点击提交"/>
+    <param name="gc_parent_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="上级类目id"/>
+    <param name="gc_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="类目名称"/>
+    <param name="t_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="规格id"/>
+    <param name="t_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="规格名称"/>
+    <param name="gc_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="类目排序"/>
+    <param name="gc_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="类目是否 可见"/>
+    <param name="gc_keywords" origin="post" required="N" type="string" allowHtml="N" typeDesc="50" comment="关键字"/>
+    <param name="para_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="t_associated" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="p_associated" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_description" origin="post" required="N" type="string" allowHtml="N" typeDesc="200" comment="类目描述"/>
+  </cgi>
+  <cgi name="Admingoodsclass_goEdit" type="sys" comment="类目编辑页" author="郑富山" needLogin="Y">
+    <param name="gc_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="类目编辑页"/>
+  </cgi>
+  <cgi name="Admingoodsclass_update" type="sys" comment="更新类目" author="郑富山" needLogin="Y">
+    <param name="gc_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="类目id"/>
+    <param name="gc_name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="20" comment="类目名称"/>
+    <param name="t_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="规格id"/>
+    <param name="t_name" origin="post" required="N" type="string" allowHtml="N" typeDesc="20" comment="规格名称"/>
+    <param name="gc_sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="类目排序"/>
+    <param name="gc_show" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="类目是否 可见"/>
+    <param name="gc_keywords" origin="post" required="N" type="string" allowHtml="N" typeDesc="50" comment="关键字"/>
+    <param name="para_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="t_associated" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="p_associated" origin="post" required="N" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="gc_description" origin="post" required="N" type="string" allowHtml="N" typeDesc="200" comment="类目描述"/>
+  </cgi>
+  <cgi name="Admingoodsclass_del" type="json" comment="删除类目" author="郑富山" needLogin="Y">
+    <param name="gc_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="类目id"/>
+  </cgi>
+  <cgi name="order_payCheck" type="json" comment="检查订单支付状态的" author="刘守凯" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单id"/>
+  </cgi>
+  <cgi name="adminalbum_del" type="json" comment="删除相册" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="相册id"/>
+  </cgi>
+  <cgi name="Admingoodsclass_ajaxclass" type="json" comment="展示子类目" author="郑富山" needLogin="Y">
+    <param name="gc_parent_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="父类目id"/>
+  </cgi>
+  <cgi name="Admingoodsclass_ajax" type="json" comment="Ajax请求" author="郑富山" needLogin="Y">
+    <param name="branch" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="goods_class_name,goods_class_show,goods_class_sort" comment="操作类型"/>
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+    <param name="column" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="字段名"/>
+    <param name="value" origin="get" required="N" type="string" allowHtml="N" typeDesc="" comment="字段值"/>
+  </cgi>
+  <cgi name="store_index" type="index" comment="明星店铺页面" author="周稳稳" needLogin="N">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="店铺id"/>
+  </cgi>
+  <cgi name="member_refundorder" type="index" comment="退款订单跟踪" author="刘毅星" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="页码"/>
+  </cgi>
+  <cgi name="adminspec_ajax" type="json" comment="ajax规格信息" author="周稳稳" needLogin="Y">
+    <param name="branch" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="sort,name" comment="操作类型"/>
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="specid"/>
+    <param name="column" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="sp_sort,sp_name" comment="更改的字段"/>
+    <param name="value" origin="get" required="Y" type="string" allowHtml="N" typeDesc="20" comment="设置的值"/>
+  </cgi>
+  <cgi name="adminalbum_cover" type="sys" comment="相册封面" author="周稳稳" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="图片id"/>
+  </cgi>
+  <cgi name="adminorder_getrefund" type="sys" comment="获取退款信息" author="刘毅星" needLogin="Y">
+    <param name="order_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+  </cgi>
+  <cgi name="adminorder_setrefund" type="json" comment="设置退款信息" author="刘毅星" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+    <param name="rec_id" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="订单商品记录ID"/>
+    <param name="refund_type" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="退款类型"/>
+    <param name="return_num" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="退货数量"/>
+    <param name="refund_amount" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="退款金额"/>
+    <param name="refund_remark" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="退款备注"/>
+  </cgi>
+  <cgi name="pay_index" type="index" comment="支付中转页" author="陈伟锋" needLogin="Y">
+    <param name="orderId" origin="post" required="Y" type="string" allowHtml="N" typeDesc="" comment="支付的订单号"/>
+    <param name="bank" origin="post" required="N" type="string" allowHtml="N" typeDesc="6" comment="支付银行号"/>
+    <param name="ch" origin="post" required="N" type="string" allowHtml="N" typeDesc="Zfb" comment="支付渠道号"/>
+    <param name="payMethod" origin="post" required="N" type="string" allowHtml="N" typeDesc="Balance" comment="支付渠道细分渠道"/>
+  </cgi>
+  <cgi name="pay_payReturn" type="index" comment="支付结果同步返回" author="陈伟锋" needLogin="Y">
+    <param name="appId" origin="get" required="Y" type="int" allowHtml="N" typeDesc="135" comment="支付中心分配的APP_ID"/>
+    <param name="sign" origin="get" required="Y" type="string" allowHtml="N" typeDesc="32" comment="身份签名"/>
+    <param name="data" origin="get" required="Y" type="string" allowHtml="N" typeDesc="" comment="支付结果数据"/>
+  </cgi>
+  <cgi name="pay_payNotify" type="index" comment="支付结果异步通知" author="陈伟锋" needLogin="N">
+    <param name="appId" origin="get" required="Y" type="int" allowHtml="N" typeDesc="135" comment="支付中心分配的APP_ID"/>
+    <param name="sign" origin="get" required="Y" type="string" allowHtml="N" typeDesc="32" comment="身份签名"/>
+    <param name="data" origin="get" required="Y" type="string" allowHtml="N" typeDesc="" comment="支付结果数据"/>
+  </cgi>
+  <cgi name="pay_refund" type="index" comment="退款接口" author="陈伟锋" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="支付订单号"/>
+    <param name="amount" origin="post" required="Y" type="float" allowHtml="N" typeDesc="[0,max]" comment="退款金额"/>
+  </cgi>
+  <cgi name="pay_refundNotify" type="index" comment="退款结果异步通知" author="陈伟锋" needLogin="N">
+    <param name="appId" origin="get" required="Y" type="int" allowHtml="N" typeDesc="135" comment="支付中心分配的APP_ID"/>
+    <param name="sign" origin="get" required="Y" type="string" allowHtml="N" typeDesc="32" comment="身份签名"/>
+    <param name="data" origin="get" required="Y" type="string" allowHtml="N" typeDesc="" comment="退款结果数据"/>
+  </cgi>
+  <cgi name="adminorder_confirmrefund" type="json" comment="确认退款信息" author="刘毅星" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+    <param name="rec_ids" origin="post" required="Y" type="int_list" allowHtml="N" typeDesc="[1,max]" comment="订单商品记录ID列表"/>
+  </cgi>
+  <cgi name="guide_index" type="index" comment="用户指南页面" author="胡华泉" needLogin="N"/>
+  <cgi name="afterservice_index" type="index" comment="售后服务页面" author="胡华泉" needLogin="N"/>
+  <cgi name="help_index" type="index" comment="关于页面" author="郑富山" needLogin="N"/>
+  <cgi name="payhelp_index" type="index" comment="支付方式页面" author="郑富山" needLogin="N"/>
+  <cgi name="sendhelp_index" type="index" comment="配送页面" author="郑富山" needLogin="N"/>
+  <cgi name="goods_getinfo" type="index" comment="客服系统查询商品接口" author="周稳稳" needLogin="N">
+    <param name="itemid" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="规格id"/>
+    <param name="user_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="用户uid"/>
+  </cgi>
+  <cgi name="bkge_checkUser" type="json" comment="佣金签约资格认证" author="陈伟锋" needLogin="N">
+    <param name="yyuid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="YY用户ID"/>
+    <param name="userType" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,2]" comment="用户类型"/>
+    <param name="product" origin="post" required="Y" type="string" allowHtml="N" typeDesc="UP24" comment="产品名"/>
+    <param name="time" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="请求时间"/>
+    <param name="sign" origin="post" required="Y" type="string" allowHtml="N" typeDesc="50" comment="请求签名"/>
+  </cgi>
+  <cgi name="bkge_changeUser" type="json" comment="佣金签约信息更变" author="陈伟锋" needLogin="N">
+    <param name="yyuid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="YY用户ID"/>
+    <param name="userType" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,2]" comment="用户类型"/>
+    <param name="contractTime" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="合同开始时间"/>
+    <param name="contractEndTime" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="合同结束时间"/>
+    <param name="time" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="请求时间"/>
+    <param name="sign" origin="post" required="Y" type="string" allowHtml="N" typeDesc="50" comment="请求签名"/>
+  </cgi>
+  <cgi name="adminbkge_listAnchor" type="sys" comment="佣金签约列表页面" author="刘守凯" needLogin="Y"/>
+  <cgi name="adminbkge_addAnchor" type="sys" comment="佣金新增签约页面" author="刘守凯" needLogin="Y"/>
+  <cgi name="adminbkge_saveAnchor" type="sys" comment="佣金保存签约" author="刘守凯" needLogin="Y">
+    <param name="yyuid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="YYUID"/>
+    <param name="signed_time" origin="post" required="Y" type="string" allowHtml="N" typeDesc="10" comment="签约起始时间"/>
+    <param name="signed_endtime" origin="post" required="Y" type="string" allowHtml="N" typeDesc="10" comment="签约终止时间"/>
+  </cgi>
+  <cgi name="adminsafeguards_safeguards" type="sys" comment="售后保障列表" author="周稳稳" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="分页"/>
+  </cgi>
+  <cgi name="adminsafeguards_editsave" type="sys" comment="售后保障列表" author="周稳稳" needLogin="Y">
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="名称"/>
+    <param name="desc" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment="描述"/>
+    <param name="sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="status" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="状态"/>
+    <param name="sgid" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="售后保障id"/>
+  </cgi>
+  <cgi name="adminsafeguards_edit" type="sys" comment="售后保障列表" author="周稳稳" needLogin="Y">
+    <param name="sgid" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="售后保障id"/>
+  </cgi>
+  <cgi name="adminsafeguards_del" type="json" comment="售后保障删除" author="周稳稳" needLogin="Y">
+    <param name="sgid" origin="get" required="Y" type="int" allowHtml="N" typeDesc="" comment=""/>
+  </cgi>
+  <cgi name="adminsafeguards_addsave" type="sys" comment="售后保障添加保存" author="周稳稳" needLogin="Y">
+    <param name="sort" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="30" comment="名称"/>
+    <param name="status" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment=""/>
+    <param name="desc" origin="post" required="Y" type="string" allowHtml="N" typeDesc="100" comment="描述"/>
+  </cgi>
+  <cgi name="adminsafeguards_add" type="sys" comment="添加页面" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminparameter_parameter" type="sys" comment="列表" author="周稳稳" needLogin="Y">
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="分页"/>
+  </cgi>
+  <cgi name="adminparameter_add" type="sys" comment="添加页面" author="周稳稳" needLogin="Y"/>
+  <cgi name="adminparameter_addsave" type="sys" comment="添加保存" author="周稳稳" needLogin="Y">
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="50" comment="参数规格名称"/>
+    <param name="sort" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="para" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="参数详情配置"/>
+    <param name="status" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="状态"/>
+  </cgi>
+  <cgi name="adminparameter_del" type="json" comment="删除" author="周稳稳" needLogin="Y">
+    <param name="para_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+  </cgi>
+  <cgi name="adminparameter_edit" type="sys" comment="编辑" author="周稳稳" needLogin="Y">
+    <param name="para_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment=""/>
+  </cgi>
+  <cgi name="adminparameter_editsave" type="sys" comment="编辑保存" author="周稳稳" needLogin="Y">
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="50" comment="参数规格名称"/>
+    <param name="sort" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[0,max]" comment="排序"/>
+    <param name="para" origin="post" required="Y" type="array" allowHtml="N" typeDesc="" comment="参数详情配置"/>
+    <param name="a_del" origin="post" required="N" type="array" allowHtml="N" typeDesc="" comment="勾选删除的"/>
+    <param name="para_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="" comment=""/>
+    <param name="status" origin="post" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="状态"/>
+  </cgi>
+  <cgi name="goods_brandRecommendGoods" type="json" comment="同品牌推荐商品" author="胡华泉" needLogin="N">
+    <param name="brand_id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="品牌ID"/>
+    <param name="goods_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="当前商品ID"/>
+  </cgi>
+  <cgi name="swf_comment" type="json" comment="评价时上传图片" author="胡华泉" needLogin="N">
+    <param name="Filename" origin="post" required="N" type="string" allowHtml="N" typeDesc="50" comment="文件名"/>
+    <param name="Upload" origin="post" required="N" type="enum" allowHtml="N" typeDesc="Submit Query" comment=""/>
+  </cgi>
+  <cgi name="member_evaluateGoods" type="json" comment="用户评价商品" author="胡华泉" needLogin="Y">
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+    <param name="point" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[-1,1]" comment="分数"/>
+    <param name="photourl" origin="post" required="N" type="string" allowHtml="N" typeDesc="900" comment="图片URL"/>
+    <param name="goods_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品ID"/>
+    <param name="content" origin="post" required="Y" type="string" allowHtml="N" typeDesc="300" comment="评价内容"/>
+  </cgi>
+  <cgi name="goodsevaluate_del" type="json" comment="删除评论" author="胡华泉" needLogin="Y">
+    <param name="geval_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="评论ID"/>
+  </cgi>
+  <cgi name="member_evaluateMsg" type="json" comment="返回评论信息" author="胡华泉" needLogin="Y">
+    <param name="goods_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="商品ID"/>
+    <param name="order_id" origin="post" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="订单ID"/>
+  </cgi>
+  <cgi name="adminvendor_listVendor" type="sys" comment="供应商管理列表页面" author="刘守凯" needLogin="Y">
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="供应商编号"/>
+    <param name="name" origin="get" required="N" type="string" allowHtml="N" typeDesc="25" comment="供应商名称"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[0,max]" comment="分页"/>
+  </cgi>
+  <cgi name="adminvendor_editVendor" type="sys" comment="供应商管理编辑页面" author="刘守凯" needLogin="Y">
+    <param name="id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="供应商编号"/>
+  </cgi>
+  <cgi name="adminvendor_saveVendor" type="sys" comment="保存供应商信息" author="刘守凯" needLogin="Y">
+    <param name="name" origin="post" required="Y" type="string" allowHtml="N" typeDesc="25" comment="供应商名称"/>
+    <param name="contacts" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="供应商联系人"/>
+    <param name="tel" origin="post" required="N" type="string" allowHtml="N" typeDesc="15" comment="供应商电话"/>
+    <param name="address" origin="post" required="N" type="string" allowHtml="N" typeDesc="80" comment="供应商地址"/>
+    <param name="settlement" origin="post" required="Y" type="string" allowHtml="N" typeDesc="10" comment="财务结算日期"/>
+    <param name="id" origin="post" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="供应商编号"/>
+  </cgi>
+  <cgi name="adminvendor_delVendor" type="sys" comment="删除供应商信息" author="刘守凯" needLogin="Y">
+    <param name="id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="供应商编号"/>
+  </cgi>
+  <cgi name="adminvendor_goods" type="sys" comment="供应商商品管理列表" author="刘毅星" needLogin="Y">
+    <param name="vendor_id" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="供应商编号"/>
+    <param name="goods_name" origin="get" required="N" type="string" allowHtml="N" typeDesc="100" comment="商品名称"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="页码"/>
+  </cgi>
+  <cgi name="adminvendor_settlement" type="sys" comment="供应商财务结算列表" author="刘毅星" needLogin="Y">
+    <param name="vendor_ids" origin="get" required="N" type="int_list" allowHtml="N" typeDesc="[1,max]" comment="供应商编号列表"/>
+    <param name="cooperation_mode" origin="get" required="N" type="enum" allowHtml="N" typeDesc="JX,DSV,ZY" comment="合作模式"/>
+    <param name="settlement_time_from" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="开始结算日期"/>
+    <param name="settlement_time_to" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="截止结算日期"/>
+    <param name="page" origin="get" required="N" type="int" allowHtml="N" typeDesc="[1,max]" comment="页码"/>
+  </cgi>
+  <cgi name="adminvendor_settlementdetail" type="sys" comment="供应商财务结算明细" author="刘毅星" needLogin="Y">
+    <param name="vendor_id" origin="get" required="Y" type="int" allowHtml="N" typeDesc="[1,max]" comment="供应商编号"/>
+    <param name="cooperation_mode" origin="get" required="Y" type="enum" allowHtml="N" typeDesc="JX,DSV,ZY" comment="合作模式"/>
+    <param name="settlement_time_from" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="开始结算日期"/>
+    <param name="settlement_time_to" origin="get" required="N" type="string" allowHtml="N" typeDesc="10" comment="截止结算日期"/>
+  </cgi>
+</cgis>
